@@ -1,0 +1,30 @@
+name: Build and Test
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+
+    - name: Install pytest
+      run: |
+        python -m pip install --upgrade pip
+        pip install pytest
+
+    - name: Test imports and syntax
+      run: |
+        python -c "import sqlite3, os; print('All imports successful')"
+        python -m py_compile app.py
+        echo "Code compilation successful"
+
+    - name: Run Pytest
+      run: pytest -v
+
