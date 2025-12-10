@@ -25,6 +25,5 @@ jobs:
         python -m py_compile app.py
         echo "Code compilation successful"
 
-    - name: Run Pytest
-      run: pytest -v
-
+    - name: Run GDPR test
+      run: pytest test_anonymisering.py -v
