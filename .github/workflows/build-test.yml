@@ -27,3 +27,4 @@ jobs:
 
     - name: Run GDPR test
       run: pytest test_anonymisering.py -v
+#hej
